@@ -41,15 +41,9 @@ pipeline {
             }
         }
 
-        stage('SonarQube'){
-            steps{
-                sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonarqube'
-            }
-        }
-
         stage('Crear imagen'){
             steps{
-                sh 'docker build -t carlosruizcrr6/examen .'
+                sh 'docker build -t carlosruizcrr6/cosmic .'
             }
         }
 
@@ -61,7 +55,7 @@ pipeline {
 
         stage('Push') {
             steps {
-                sh 'docker push carlosruizcrr6/examen'
+                sh 'docker push carlosruizcrr6/cosmic'
             }
         }
     }
