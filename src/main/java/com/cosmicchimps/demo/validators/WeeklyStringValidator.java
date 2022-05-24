@@ -12,6 +12,6 @@ public class WeeklyStringValidator implements ConstraintValidator<ConstraintAnno
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return value.equals("WEEKLY");
+        return value != null && value.equals("WEEKLY");
     }
 }

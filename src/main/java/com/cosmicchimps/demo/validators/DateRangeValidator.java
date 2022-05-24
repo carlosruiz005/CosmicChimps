@@ -22,8 +22,12 @@ public class DateRangeValidator implements ConstraintValidator<ConstraintAnnotat
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        LocalDate startDate = (LocalDate) new BeanWrapperImpl(value).getPropertyValue(this.startDate);
-        LocalDate endDate = (LocalDate) new BeanWrapperImpl(value).getPropertyValue(this.endDate);
-        return startDate.isBefore(endDate);
+        try {
+            LocalDate startDate = (LocalDate) new BeanWrapperImpl(value).getPropertyValue(this.startDate);
+            LocalDate endDate = (LocalDate) new BeanWrapperImpl(value).getPropertyValue(this.endDate);
+            return startDate.isBefore(endDate);
+        } catch (NullPointerException e) {
+            return false;
+        }
     }
 }

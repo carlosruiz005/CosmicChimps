@@ -36,10 +36,10 @@ public class Schedule {
     @NotEmpty(message = "frequency can't be blank.")
     @WeeklyStringConstraint
     private String frequency;
-    @NotNull(message = "dayList can't be blank.")
-    @NotEmptyListConstraint
+    @NotNull(message = "dayList can't be null.")
     @NotDuplicateConstraint
     @DayNamesConstraint
+    @NotEmptyListConstraint
     private List<String> dayList;
     @NotNull
     private LocalDate created;

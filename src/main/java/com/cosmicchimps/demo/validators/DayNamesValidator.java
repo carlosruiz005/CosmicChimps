@@ -14,6 +14,9 @@ public class DayNamesValidator implements ConstraintValidator<ConstraintAnnotati
 
     @Override
     public boolean isValid(List<String> values, ConstraintValidatorContext context) {
+        if (values == null) {
+            return false;
+        }
         return values.stream().allMatch(v -> {
             try {
                 DayEnum.valueOf(v);
