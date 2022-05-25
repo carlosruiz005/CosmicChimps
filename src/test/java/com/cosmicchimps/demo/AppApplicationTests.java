@@ -1,9 +1,12 @@
 package com.cosmicchimps.demo;
 
+import com.cosmicchimps.demo.controller.ScheduleController;
 import com.cosmicchimps.demo.dto.NewSchedule;
+import com.cosmicchimps.demo.service.ScheduleService;
 import com.cosmicchimps.demo.util.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Arrays;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,9 +29,15 @@ class AppApplicationTests {
     private MockMvc mvc;
     @Autowired
     private ObjectMapper mapper;
+    @Autowired
+    private ScheduleController scheduleController;
+    @Autowired
+    private ScheduleService scheduleService;
 
     @Test
     void contextLoads() {
+        assertThat(scheduleController).isNotNull();
+        assertThat(scheduleService).isNotNull();
     }
 
     @Test

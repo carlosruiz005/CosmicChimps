@@ -7,6 +7,7 @@ import com.cosmicchimps.demo.util.Utils;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,9 +36,11 @@ public class ScheduleService {
 
     public Map<String, Boolean> isValid(String scheduleId, String date) {
         Map<String, Boolean> response = new HashMap();
-        response.put(
-                "isValid",
-                this.scheduleRepository.findByIdAndEndDateAfter(scheduleId, Utils.parseStringToLocalDate(date)) != null);
+        Optional<Schedule> op = this.scheduleRepository.findById(scheduleId);
+        response.put("isValid",
+                !op.isEmpty()
+                && Utils.isDateInRange(date, op.get())
+                && Utils.isEffectiveDay(date, op.get()));
         return response;
     }
 }
