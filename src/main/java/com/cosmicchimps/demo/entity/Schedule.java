@@ -9,7 +9,10 @@ import java.time.LocalDate;
 import java.util.List;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
@@ -21,6 +24,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Document(collection = "schedules")
 @NotBeforeStartDateConstraint(startDate = "startDate", endDate = "endDate")
@@ -44,18 +50,5 @@ public class Schedule {
     @NotNull
     private LocalDate created;
     private LocalDate deleted;
-
-    public Schedule() {
-    }
-
-    public Schedule(String id, LocalDate startDate, LocalDate endDate, String frequency, List<String> dayList, LocalDate created, LocalDate deleted) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.frequency = frequency;
-        this.dayList = dayList;
-        this.created = created;
-        this.deleted = deleted;
-    }
 
 }
