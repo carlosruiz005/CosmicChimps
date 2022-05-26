@@ -127,4 +127,257 @@ public class ScheduleServiceTest {
                 .andExpect(jsonPath("$.isValid").value(false));
     }
 
+
+    @Test
+    public void scheduleShouldValidateIntervalBy2() throws Exception {
+        Schedule s = Schedule.builder()
+                .id("test")
+                .startDate(Utils.parseStringToLocalDate("2022-06-01"))
+                .endDate(Utils.parseStringToLocalDate("2022-06-30"))
+                .frequency("WEEKLY")
+                .dayList(Arrays.asList("MO", "TU", "WE", "TH", "FR"))
+                .interval(2)
+                .created(LocalDate.now())
+                .build();
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-01"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-02"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-03"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-04"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-05"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-06"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-07"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-08"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-09"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-10"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-11"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-12"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-13"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-14"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-15"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-16"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-17"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-18"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-19"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-20"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-21"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-22"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-23"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-24"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-25"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-26"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(false));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-27"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-28"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-29"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+
+
+        when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
+        mvc
+                .perform(get("/schedule/test/is-valid/2022-06-30"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.isValid").value(true));
+    }
+
 }
