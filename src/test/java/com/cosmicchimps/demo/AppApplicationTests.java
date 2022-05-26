@@ -47,6 +47,7 @@ class AppApplicationTests {
                 Utils.parseStringToLocalDate("2022-05-23"),
                 Utils.parseStringToLocalDate("2022-05-13"),
                 "WEEKLY",
+                1,
                 Arrays.asList("SU"));
         String ss = mapper.writeValueAsString(s);
         mvc
@@ -65,6 +66,7 @@ class AppApplicationTests {
                 Utils.parseStringToLocalDate("2022-05-23"),
                 Utils.parseStringToLocalDate("2022-05-24"),
                 "WEEKLY",
+                1,
                 Arrays.asList("SU", "SU"));
         String ss = mapper.writeValueAsString(s);
         mvc
@@ -82,6 +84,7 @@ class AppApplicationTests {
                 null,
                 Utils.parseStringToLocalDate("2022-05-24"),
                 "WEEKLY",
+                1,
                 Arrays.asList("SU", "SU"));
         String ss = mapper.writeValueAsString(s);
         mvc
@@ -99,6 +102,7 @@ class AppApplicationTests {
                 Utils.parseStringToLocalDate("2022-05-24"),
                 Utils.parseStringToLocalDate("2022-05-24"),
                 "WEEKLY",
+                1,
                 Arrays.asList());
         String ss = mapper.writeValueAsString(s);
         mvc

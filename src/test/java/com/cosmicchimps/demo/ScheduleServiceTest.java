@@ -59,6 +59,7 @@ public class ScheduleServiceTest {
                 Utils.parseStringToLocalDate("2022-05-24"),
                 Utils.parseStringToLocalDate("2022-05-25"),
                 "WEEKLY",
+                1,
                 Arrays.asList("SU"));
         when(scheduleMockRepository.save(any(Schedule.class))).thenReturn(new Schedule());
         String ss = mapper.writeValueAsString(s);
@@ -77,6 +78,7 @@ public class ScheduleServiceTest {
                 Utils.parseStringToLocalDate("2022-05-25"),
                 Utils.parseStringToLocalDate("2022-05-24"),
                 "WEEKLY",
+                1,
                 Arrays.asList("SU"));
         when(scheduleMockRepository.save(any(Schedule.class))).thenReturn(new Schedule());
         String ss = mapper.writeValueAsString(s);

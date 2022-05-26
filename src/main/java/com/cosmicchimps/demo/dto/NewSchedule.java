@@ -24,5 +24,6 @@ public class NewSchedule {
     private LocalDate startDate;
     private LocalDate endDate;
     private String frequency;
+    private Integer interval;
     private List<String> dayList;
 }

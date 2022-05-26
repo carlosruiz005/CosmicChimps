@@ -40,7 +40,8 @@ public class ScheduleService {
         response.put("isValid",
                 !op.isEmpty()
                 && Utils.isDateInRange(date, op.get())
-                && Utils.isEffectiveDay(date, op.get()));
+                && Utils.isEffectiveDay(date, op.get())
+                && Utils.isWeekIntervalEffective(date, op.get()));
         return response;
     }
 }
