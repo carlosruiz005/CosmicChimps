@@ -41,7 +41,8 @@ public class ScheduleService {
                 !op.isEmpty()
                 && Utils.isDateInRange(date, op.get())
                 && Utils.isEffectiveDay(date, op.get())
-                && Utils.isWeekIntervalEffective(date, op.get()));
+                && Utils.isWeekIntervalEffective(date, op.get())
+        );
         return response;
     }
 }

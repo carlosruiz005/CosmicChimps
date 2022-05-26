@@ -4,7 +4,6 @@ import com.cosmicchimps.demo.entity.Schedule;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.WeekFields;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class Utils {
      */
     public static boolean isDateInRange(String date, Schedule s) {
         LocalDate ld = parseStringToLocalDate(date);
-        return ld.isAfter(s.getStartDate()) && ld.isBefore(s.getEndDate());
+        return (ld.isAfter(s.getStartDate()) || ld.isEqual(s.getStartDate())) && (ld.isBefore(s.getEndDate()) || ld.equals(s.getEndDate()));
     }
 
     /**
@@ -70,7 +69,7 @@ public class Utils {
         int numberOfWeekStartDate = getWeekNumer(setFirstDayOfWeek(s.getStartDate()));
         int numberOfWeekEndDate = getWeekNumer(setFirstDayOfWeek(s.getEndDate()));
         int numberOfWeekOfDate = getWeekNumer(setFirstDayOfWeek(ld));
-        for (int i = numberOfWeekStartDate; i < numberOfWeekEndDate; i = i + s.getInterval()) {
+        for (int i = numberOfWeekStartDate; i <= numberOfWeekEndDate; i = i + s.getInterval()) {
             semanasEfectivas.add(i);
         }
         return semanasEfectivas.stream().anyMatch(se -> se == numberOfWeekOfDate);
@@ -81,6 +80,6 @@ public class Utils {
     }
 
     private static LocalDate setFirstDayOfWeek(LocalDate date) {
-        return date.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+        return date.with(DayOfWeek.MONDAY);
     }
 }

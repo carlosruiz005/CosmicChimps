@@ -51,6 +51,7 @@ public class ScheduleServiceTest {
     @Test
     void contextLoads() {
         assertThat(scheduleController).isNotNull();
+        assertThat(scheduleService).isNotNull();
     }
 
     @Test
@@ -98,12 +99,13 @@ public class ScheduleServiceTest {
                 .startDate(Utils.parseStringToLocalDate("2022-06-01"))
                 .endDate(Utils.parseStringToLocalDate("2022-06-08"))
                 .frequency("WEEKLY")
+                .interval(1)
                 .dayList(Arrays.asList("MO", "TU", "WE", "TH", "FR"))
                 .created(LocalDate.now())
                 .build();
         when(scheduleMockRepository.findById(any(String.class))).thenReturn(Optional.of(s));
         mvc
-                .perform(get("/schedule/test/is-valid/2022-06-02"))
+                .perform(get("/schedule/test/is-valid/2022-06-01"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.isValid").value(true));
@@ -116,6 +118,7 @@ public class ScheduleServiceTest {
                 .startDate(Utils.parseStringToLocalDate("2022-06-01"))
                 .endDate(Utils.parseStringToLocalDate("2022-06-08"))
                 .frequency("WEEKLY")
+                .interval(1)
                 .dayList(Arrays.asList("MO", "TU", "WE", "TH", "FR"))
                 .created(LocalDate.now())
                 .build();
@@ -127,8 +130,7 @@ public class ScheduleServiceTest {
                 .andExpect(jsonPath("$.isValid").value(false));
     }
 
-
-    @Test
+     @Test
     public void scheduleShouldValidateIntervalBy2() throws Exception {
         Schedule s = Schedule.builder()
                 .id("test")
@@ -379,5 +381,4 @@ public class ScheduleServiceTest {
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.isValid").value(true));
     }
-
 }
